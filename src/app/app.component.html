@@ -1,0 +1,58 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome {{ title }}!
+  </h1>
+  <img width="300" alt="Angular Logo"
+    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+</div>
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+      <mat-horizontal-stepper [linear]="true" #stepper>
+          <mat-step [stepControl]="firstFormGroup" class="row">
+            <form [formGroup]="firstFormGroup" class="col-md-6">
+              <ng-template matStepLabel>Fill out your address</ng-template>
+              <div class="form-group">
+                <label>Fill out your name</label>
+                <input class="form-control" placeholder="Last name, First name" formControlName="firstCtrl" required>
+              </div>
+              <div>
+                <button class="btn btn-primary btn-sm" matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step [stepControl]="secondFormGroup" class="row">
+            <form [formGroup]="secondFormGroup" class="col-md-6">
+        
+              <ng-template matStepLabel>Fill out your address</ng-template>
+              <div class="form-group" >
+                <label>Fill out your address</label>
+                <input class="form-control" placeholder="Address" formControlName="secondCtrl" required>
+        
+              </div>
+        
+              <div class="btn-toolbar">
+                <button class="btn btn-secondary btn-space btn-sm" matStepperPrevious>Back</button>
+                <button class="btn btn-primary btn-sm" matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Done</ng-template>
+            You are now done. <br/> 
+            Your name: {{firstFormGroup.get('firstCtrl').value}}
+            <br/> 
+            Your address: {{secondFormGroup.get('secondCtrl').value}}
+            <div>
+              <button mat-button class="btn btn-secondary btn-space btn-sm" matStepperPrevious>Back</button>
+              <button mat-button class="btn btn-primary btn-sm" (click)="stepper.reset()">Reset</button>
+            </div>
+          </mat-step>
+        </mat-horizontal-stepper>
+  </div>
+  <div class="col-md-3"></div>
+</div>
+
+
+<router-outlet></router-outlet>
